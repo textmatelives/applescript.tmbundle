@@ -8,7 +8,7 @@
 	<string>#!/usr/bin/env ruby -ruri
 
 src = 'applescript://com.apple.scripteditor?action=new&amp;script='
-src &lt;&lt; URI.encode(STDIN.read)
+src &lt;&lt; URI::DEFAULT_PARSER.escape(STDIN.read)
 
 open('|pbcopy', 'w') { |io| io &lt;&lt; src }
 
